@@ -1,0 +1,37 @@
+﻿@model MiniBlog.Models.Post
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Автор
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Author
+        </dd>
+        <dt class="col-sm-2">
+            Дата публикации
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")
+        </dd>
+        <dt class="col-sm-2">
+            Содержание
+        </dt>
+        <dd class="col-sm-10">
+            <div class="border p-3 bg-light">
+                @Html.DisplayFor(model => model.Content)
+            </div>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Редактировать</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+</div>
